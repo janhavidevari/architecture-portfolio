@@ -4,22 +4,17 @@ import mdx from '@astrojs/mdx';
 import tailwindcss from '@tailwindcss/vite';
 import typography from '@tailwindcss/typography';
 import Icons from 'unplugin-icons/vite';
-import basicSsl from '@vitejs/plugin-basic-ssl';
-import cloudflare from '@astrojs/cloudflare';
-
 export default defineConfig({
-  site: 'https://janhavidevari.github.io/architecture-portfolio/', // Add this line
+  site: 'https://janhavidevari.github.io',
+  base: '/architecture-portfolio',
   integrations: [mdx()],
+  output: 'static',
   vite: {
     plugins: [
-      basicSsl(),
       tailwindcss(),
       Icons({
         compiler: 'astro',
       }),
     ],
   },
-  adapter: cloudflare({
-    imageService: 'compile',
-  }),
 });
